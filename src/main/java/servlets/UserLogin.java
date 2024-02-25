@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import dao.UserDao;
 import entities.User;
 import helpers.ConnectionProvider;
+import helpers.Message;
 
 @WebServlet(name = "UserLogin", value = "/UserLogin")
 public class UserLogin extends HttpServlet {
@@ -21,14 +22,14 @@ public class UserLogin extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		RequestDispatcher rd = request.getRequestDispatcher("login_page.jsp");
 		PrintWriter pWriter = response.getWriter();
 		
 		UserDao dao = new UserDao(ConnectionProvider.getConnection());
 		User user = dao.getUserByEmailAndPassword(request.getParameter("email"), request.getParameter("password"));
 		if (user==null) {
-			rd.include(request, response);
-			pWriter.print("Incorrect email or password");
+			Message m = new Message("Incorrect email or password", "Error!", "alert alert-danger");
+			HttpSession session = request.getSession();
+			session.setAttribute("msg", m);
 			response.sendRedirect("login_page.jsp");
 		}
 		else {
