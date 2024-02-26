@@ -12,10 +12,13 @@ if(user==null){
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="bootstrap.jsp" %>
 <meta charset="UTF-8">
 <title>Home</title>
 </head>
 <body>
+<%@include file="user_navbar.jsp" %>
+
 <h1>Hi <%=user.getUserName() %> welcome to profile page</h1>
 </body>
 </html>

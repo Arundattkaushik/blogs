@@ -30,6 +30,9 @@ public class UserLogin extends HttpServlet {
 			Message m = new Message("Incorrect email or password", "Error!", "alert alert-danger");
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", m);
+			System.out.println(m.getMsgContent());
+			System.out.println();
+			System.out.println();
 			response.sendRedirect("login_page.jsp");
 		}
 		else {
