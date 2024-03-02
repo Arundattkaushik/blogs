@@ -1,4 +1,5 @@
 
+<%@page import="entities.User"%>
 <%@page import="helpers.Message"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -30,26 +31,21 @@
 						<span class="fa fa-user-circle fa-3x"></span>
 							<p>Login here</p>
 						</div>
-						<div class="card-body">
-						
-						
-							<form action="UserLogin" method="post">
-								<div class="mb-3">
-								
-								<%
-									Message m = (Message)request.getAttribute("msg");
-									if(m!=null){
+						<%
+							Message msg = (Message)session.getAttribute("msg");
+							if(msg!=null){
 								%>
-								<%=m.getMsgContent() %>
-								<div class="alert alert-danger" role="alert">
-								  This is a danger alert—check it out!
+								<div class="alert <%=msg.getMsgCss() %>" role="alert">
+								 <%=msg.getMsgContent() %>
 								</div>
 								<%
-								
-								};
-								%>
-								
-								
+								session.removeAttribute("msg");
+							}
+						%>
+
+						<div class="card-body">
+							<form action="UserLogin" method="post">
+								<div class="mb-3">
 									<label for="exampleInputEmail1" class="form-label">Email address</label> 
 									<input type="email" name="email" required="required" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 								</div>

@@ -27,10 +27,11 @@ public class UserLogin extends HttpServlet {
 		UserDao dao = new UserDao(ConnectionProvider.getConnection());
 		User user = dao.getUserByEmailAndPassword(request.getParameter("email"), request.getParameter("password"));
 		if (user==null) {
-			Message m = new Message("Incorrect email or password", "Error!", "alert alert-danger");
+			Message m = new Message("Incorrect email or password", "Error!", "alert-danger");
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", m);
-			System.out.println(m.getMsgContent());
+			//System.out.println(m.getMsgContent());
+			
 			System.out.println();
 			System.out.println();
 			response.sendRedirect("login_page.jsp");
