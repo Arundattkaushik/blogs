@@ -31,16 +31,12 @@ public class UserLogin extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("msg", m);
 			//System.out.println(m.getMsgContent());
-			
-			System.out.println();
-			System.out.println();
 			response.sendRedirect("login_page.jsp");
 		}
 		else {
 			HttpSession session = request.getSession();
 			session.setAttribute("currentUser", user);
 			response.sendRedirect("user_profile.jsp");
-			System.out.println("you have logged in successfully");
 		}
 	}
 

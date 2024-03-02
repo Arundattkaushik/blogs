@@ -1,5 +1,8 @@
 <%@page import="entities.User"%>
 <link rel="stylesheet" href="css/navbar.css">
+<%
+User u = (User)session.getAttribute("currentUser");
+%>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
   <a class="navbar-brand text-light" href="index.jsp"><span class="fa fa-asterisk"></span>Techblog</a>
@@ -9,9 +12,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link text-white" href="#">Home</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
@@ -28,11 +28,8 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-      
-       	<a class="nav-link text-white" href="login_page.jsp"><span class="fa fa-user-plus m-1"></span>UserNmae</a>
-      	<a class="nav-link text-white" href="login_page.jsp"><span class="fa fa-user-plus m-1"></span>Logout</a>
+       	<a class="nav-link text-white" href="login_page.jsp"><span class="fa fa-user-plus m-1"></span><%=u.getUserName() %></a>
+      	<a class="nav-link text-white" href="UserLogoutServlet"><span class="fa fa-user-plus m-1"></span>Logout</a>
       	
     </form>
   </div>
