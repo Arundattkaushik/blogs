@@ -3,7 +3,7 @@ package entities;
 import java.sql.Timestamp;
 
 public class User {
-
+	
 	private int userId;
 	private String userName;
 	private String userEmail;
@@ -11,6 +11,25 @@ public class User {
 	private String userGender;
 	private Timestamp createTime;
 	private String userProfile;
+	
+	
+	
+	
+	public User() {
+		
+	}
+
+	public User(int userId, String userName, String userEmail, String userPassword, String userGender,
+			Timestamp createTime, String userProfile) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userPassword = userPassword;
+		this.userGender = userGender;
+		this.createTime = createTime;
+		this.userProfile = userProfile;
+	}
 	
 	
 	public String getUserProfile() {
@@ -33,13 +52,7 @@ public class User {
 		this.userPassword = userPassword;
 		this.userGender = userGender;
 	}
-	
-	
-	public User() {
-		
-	}
 
-	
 	
 	public int getUserId() {
 		return userId;

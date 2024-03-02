@@ -19,6 +19,9 @@ if(user==null){
 <body>
 <%@include file="user_navbar.jsp" %>
 
+<!-- Profile Model start -->
+<!-- Button trigger modal -->
+
 <h1>Hi <%=user.getUserName() %> welcome to profile page</h1>
 </body>
 </html>
