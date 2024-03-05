@@ -1,3 +1,8 @@
+<%@page import="entities.Categories"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="helpers.ConnectionProvider"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="dao.PostDao"%>
 <%@page import="entities.User"%>
 <link rel="stylesheet" href="css/navbar.css">
 <%
@@ -5,7 +10,7 @@ User u = (User)session.getAttribute("currentUser");
 %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <a class="navbar-brand text-light" href="index.jsp"><span class="fa fa-asterisk"></span>Techblog</a>
+  <a class="navbar-brand text-light" href="index.jsp"><span class="fa fa-asterisk mr-2"></span>Techblog</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,6 +31,11 @@ User u = (User)session.getAttribute("currentUser");
       <li>
         <a class="nav-link text-white" href="#">Contact Us</a>
       </li>
+      
+        <li>
+        <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#addnewpost"><i class="fa fa-solid fa-plus mr-2"></i></span>Create Post</a>
+      </li>
+      
     </ul>
     <form class="form-inline my-2 my-lg-0">
        	<a class="nav-link text-white" href="login_page.jsp" data-toggle="modal" data-target="#exampleModalCenter"><span class="fa fa-user-plus m-1"></span><%=u.getUserName() %></a>
@@ -41,9 +51,9 @@ User u = (User)session.getAttribute("currentUser");
     
     
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
         </button>
    		</div>
 <div class="modal-body">
@@ -89,4 +99,66 @@ User u = (User)session.getAttribute("currentUser");
 </div>
 
 <!-- Profile Model Ends here -->
+
+<!-- Post Model Starts -->
+<div class="modal fade" id="addnewpost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      
+      <div class="modal-body">
+       
+		<form action="addpostservlet" method="post">
+		<div class="form-group">
+		<select class="form-control">
+		<option selected disbled >  ---Select a category---  </option>
+		<% 
+		new PostDao(ConnectionProvider.getConnection());
+		ArrayList<Categories> list = PostDao.getAllCategories();
+		for(Categories c: list){	
+		%>
+		<option><%=c.getName() %></option>
+		<%
+		}
+		%>
+		</select>		
+		</div>
+		<br>
+		
+		<div class="form-group"> 
+		<input type="text" placeholder="Post title" class="form-control">
+		</div>
+		
+		<div class="form-group"> 
+		<textarea style="height: 200px" class="form-control" placeholder="write post content here......."></textarea>
+		</div>
+		
+		<div> 
+		<textarea class="form-control" placeholder="Post Code"></textarea>
+		</div>
+		<br>
+		<div> 
+		<input type="file">
+		</div>
+		
+		</form>
+		
+      </div>
+      
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Post Model Ends here -->
 </nav>
