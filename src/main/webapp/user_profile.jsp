@@ -13,6 +13,7 @@ if(user==null){
 <html>
 <head>
 <%@include file="bootstrap.jsp" %>
+
 <meta charset="UTF-8">
 <title>Home</title>
 </head>

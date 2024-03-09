@@ -10,8 +10,26 @@ public class Posts {
 	private String ppic;
 	private Timestamp pdate;
 	private int catid;
+	private String userId;
+	private String category;
 	
 	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public int getPid() {
 		return pid;
 	}
@@ -67,9 +85,17 @@ public class Posts {
 	public void setCatid(int catid) {
 		this.catid = catid;
 	}
+	
+	public Posts(String ptitle, String pContent, String pcode, String ppic) {
+		super();
+		this.ptitle = ptitle;
+		this.pContent = pContent;
+		this.pcode = pcode;
+		this.ppic = ppic;
+	}
 
 	public Posts(String ptitle, String pContent, String pcode, String ppic, Timestamp pdate, int catid) {
-		super();
+		
 		this.ptitle = ptitle;
 		this.pContent = pContent;
 		this.pcode = pcode;
@@ -79,7 +105,7 @@ public class Posts {
 	}
 
 	public Posts(int pid, String ptitle, String pContent, String pcode, String ppic, Timestamp pdate, int catid) {
-		super();
+		
 		this.pid = pid;
 		this.ptitle = ptitle;
 		this.pContent = pContent;
@@ -91,5 +117,25 @@ public class Posts {
 	
 	public Posts() {
 		
+	}
+
+	public Posts(String ptitle, String pContent, String pcode, String ppic, Timestamp pdate, String category) {
+		super();
+		this.ptitle = ptitle;
+		this.pContent = pContent;
+		this.pcode = pcode;
+		this.ppic = ppic;
+		this.pdate = pdate;
+		this.category = category;
+	}
+
+	public Posts(String ptitle, String pContent, String pcode, String ppic, String userId, String category) {
+		super();
+		this.ptitle = ptitle;
+		this.pContent = pContent;
+		this.pcode = pcode;
+		this.ppic = ppic;
+		this.userId = userId;
+		this.category = category;
 	}
 }

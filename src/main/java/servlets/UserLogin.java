@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import dao.PostDao;
 import dao.UserDao;
 import entities.User;
 import helpers.ConnectionProvider;
@@ -22,7 +23,6 @@ public class UserLogin extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter pWriter = response.getWriter();
 		
 		UserDao dao = new UserDao(ConnectionProvider.getConnection());
 		User user = dao.getUserByEmailAndPassword(request.getParameter("email"), request.getParameter("password"));

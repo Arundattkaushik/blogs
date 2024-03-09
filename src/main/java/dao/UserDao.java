@@ -1,9 +1,12 @@
 package dao;
 
+import java.security.PublicKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import entities.Posts;
 import entities.User;
 
 public class UserDao {
@@ -59,5 +62,4 @@ public class UserDao {
 		
 		return user;
 	}
-	
 }
